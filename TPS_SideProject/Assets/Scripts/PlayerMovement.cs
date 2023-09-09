@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         
         if(input.isJump)
         {
-            Jump();
+            //Jump();
         }
     }
     
@@ -58,18 +58,20 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveDir = Vector3.Normalize(transform.forward * moveInput.y + transform.right * moveInput.x);
 
         var smoothTime = characterController.isGrounded ? speedSmoothTime : speedSmoothTime / airControlPercent;
+
         targetSpeed = Mathf.SmoothDamp(currentSpeed, targetSpeed, ref speedSmoothVelocity, smoothTime);
 
         currnetVelocityY += Time.deltaTime * Physics.gravity.y;
 
         Vector3 velocity = moveDir * targetSpeed + Vector3.up * currnetVelocityY;
 
-        characterController.Move(velocity * Time.fixedDeltaTime);
+        characterController.Move(velocity * Time.deltaTime);
 
-        if(characterController.isGrounded == true)
+        if (characterController.isGrounded == true)
         {
             currnetVelocityY = 0f;
         }
+
     }
     
     public void Rotate()
@@ -96,8 +98,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimation(Vector2 moveInput)
     {
-        var animationSpeedPercent = currentSpeed / speed;
-        animator.SetFloat("Vertical", moveInput.y * animationSpeedPercent, 0.05f, Time.deltaTime);
-        animator.SetFloat("Horizontal", moveInput.x * animationSpeedPercent, 0.05f, Time.deltaTime);
+        var animationSpeedPercent =  currentSpeed / speed;
+        animator.SetFloat("Vertical", moveInput.y, 0.05f, Time.deltaTime);
+        animator.SetFloat("Horizontal", moveInput.x, 0.05f, Time.deltaTime);
     }
 }
