@@ -121,6 +121,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &48597966 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6577581979504100380, guid: 1e4f53f4a36c61646acd7a64075ef884,
+    type: 3}
+  m_PrefabInstance: {fileID: 8440687239834021375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &48597972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48597966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992fe86ac74643f45a9c7c81388ae193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  excludeTarget:
+    serializedVersion: 2
+    m_Bits: 0
+  gun: {fileID: 1615352501}
 --- !u!1 &186624834
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +332,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312498318}
-  m_LocalRotation: {x: -0.052070152, y: 0.11895995, z: 0.0062472816, w: 0.99151313}
+  m_LocalRotation: {x: -0.05206842, y: 0.11923515, z: 0.0062617357, w: 0.99148005}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -390,7 +412,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455149995}
-  m_LocalRotation: {x: -0.07954008, y: 0.118741006, z: 0.009543075, w: 0.9896883}
+  m_LocalRotation: {x: -0.07953741, y: 0.11901569, z: 0.0095651485, w: 0.9896553}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -524,6 +546,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &565685780 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198000010131513902, guid: 8e60b325a019543cbb2e3920522a2e6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1312743576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &629675092
 GameObject:
   m_ObjectHideFlags: 3
@@ -794,7 +822,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225919753}
-  m_LocalRotation: {x: -0.05207016, y: 0.11895996, z: 0.0062472844, w: 0.99151313}
+  m_LocalRotation: {x: -0.052068423, y: 0.11923514, z: 0.006261735, w: 0.99148005}
   m_LocalPosition: {x: 0, y: 1.501, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -968,7 +996,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332948977}
-  m_LocalRotation: {x: -0.02402174, y: 0.119089015, z: 0.0028820853, w: 0.99258876}
+  m_LocalRotation: {x: -0.024020933, y: 0.11936451, z: 0.002888752, w: 0.9925557}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1303,6 +1331,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b316eea0c49816345af31efaa7d6b2c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotClip: {fileID: 8300000, guid: 242534c49eb0f41bcafc7cc8fb1d7c17, type: 3}
+  reloadClip: {fileID: 8300000, guid: 69cd01fbd257141ef9a8f2c2a537c7c2, type: 3}
+  muzzleFlashEffect: {fileID: 2102524591}
+  shellEjectEffect: {fileID: 565685780}
+  fireTransform: {fileID: 2039101053}
+  leftHandMount: {fileID: 186624835}
+  damage: 25
+  fireDistance: 100
+  ammoRemain: 100
+  magAmmo: 0
+  magCapacity: 30
+  timeBetFire: 0.12
+  reloadTime: 1.8
+  maxSpread: 3
+  stability: 1
+  restoreFromRecoilSpeed: 2
 --- !u!1 &1629333715
 GameObject:
   m_ObjectHideFlags: 3
@@ -1811,6 +1855,12 @@ Transform:
   m_Father: {fileID: 1615352496}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &2102524591 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 198234346748616026, guid: ad2ab49d0a2a17148bd51c93d977bdbc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1150440118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2675361429138223961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5765613960102026918, guid: 1e4f53f4a36c61646acd7a64075ef884,
