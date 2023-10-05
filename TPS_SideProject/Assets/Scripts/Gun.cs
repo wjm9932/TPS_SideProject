@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
     public int magCapacity = 30;
 
     public float timeBetFire = 0.12f;
-    private float reloadTime = 1.5f;
+    private float reloadTime = 1.2f;
 
     [Range(0f, 10f)] public float maxSpread = 3f;
     [Range(1f, 10f)] public float stability = 1f;
