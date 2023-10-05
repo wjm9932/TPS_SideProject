@@ -71,13 +71,7 @@ public class PlayerShooter : MonoBehaviour
             Shoot();
         }
 
-        var angle = playerCamera.transform.eulerAngles.x;
-        if (angle > 270)
-        {
-            angle -= 360f;
-        }
-        angle = angle / -180f + 0.5f;
-        playerAnimator.SetFloat("Angle", angle);
+        UpdateAnimation();
 
         if (!playerInput.isFire && Time.time >= lastFireInputTime + waitingTimeForReleasdingAim)
         {
@@ -85,7 +79,28 @@ public class PlayerShooter : MonoBehaviour
         }
 
         UpdateAimTarget();
+        UpdateUI();
+    }
 
+    private void UpdateAnimation()
+    {
+        var angle = playerCamera.transform.eulerAngles.x;
+        if (angle > 270)
+        {
+            angle -= 360f;
+        }
+        angle = angle / -180f + 0.5f;
+        playerAnimator.SetFloat("Angle", angle);
+    }
+    private void UpdateUI()
+    {
+        if(gun == null || UIManager.Instance == null)
+        {
+            return;
+        }
+        UIManager.Instance.UpdateAmmoText(gun.magAmmo, gun.ammoRemain);
+        UIManager.Instance.SetActiveCrosshair(hasEnoughDistance);
+        UIManager.Instance.UpdateCrossHairPosition(aimPoint);
     }
 
     public void Reload()
