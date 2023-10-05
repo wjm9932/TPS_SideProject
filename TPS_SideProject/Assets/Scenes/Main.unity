@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   excludeTarget:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   gun: {fileID: 1615352501}
 --- !u!1 &186624834
 GameObject:
@@ -332,7 +332,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312498318}
-  m_LocalRotation: {x: -0.05206842, y: 0.11923515, z: 0.0062617357, w: 0.99148005}
+  m_LocalRotation: {x: -0.051944524, y: 0.13744053, z: 0.007217807, w: 0.9891207}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -412,7 +412,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455149995}
-  m_LocalRotation: {x: -0.07953741, y: 0.11901569, z: 0.0095651485, w: 0.9896553}
+  m_LocalRotation: {x: -0.079348154, y: 0.13718759, z: 0.011025604, w: 0.98730034}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -822,7 +822,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225919753}
-  m_LocalRotation: {x: -0.052068423, y: 0.11923514, z: 0.006261735, w: 0.99148005}
+  m_LocalRotation: {x: -0.051944528, y: 0.13744055, z: 0.007217809, w: 0.9891207}
   m_LocalPosition: {x: 0, y: 1.501, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -996,7 +996,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332948977}
-  m_LocalRotation: {x: -0.024020933, y: 0.11936451, z: 0.002888752, w: 0.9925557}
+  m_LocalRotation: {x: -0.023963772, y: 0.13758963, z: 0.003329819, w: 0.99019384}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1343,7 +1343,6 @@ MonoBehaviour:
   magAmmo: 0
   magCapacity: 30
   timeBetFire: 0.12
-  reloadTime: 1.8
   maxSpread: 3
   stability: 1
   restoreFromRecoilSpeed: 2

@@ -18,6 +18,9 @@ public class PlayerShooter : MonoBehaviour
     private Animator playerAnimator;
     private Camera playerCamera;
 
+    private float waitingTimeForReleasdingAim = 2.5f;
+    private float lastFireInputTime;
+
     private Vector3 aimPoint;
     private bool linedUp => !(Mathf.Abs(playerCamera.transform.eulerAngles.y - transform.eulerAngles.y) > 1f);
     private bool hasEnoughDistance => !Physics.Linecast(transform.position + Vector3.up * gun.fireTransform.position.y, gun.transform.position, ~excludeTarget);
@@ -40,37 +43,49 @@ public class PlayerShooter : MonoBehaviour
 
     private void OnEnable()
     {
+        aimState = AimState.Idle;
         gun.gameObject.SetActive(true);
         gun.SetUp(this);
     }
     private void OnDisable()
     {
+        aimState = AimState.Idle;
         gun.gameObject.SetActive(false);
     }
     private void FixedUpdate()
     {
-        if (playerInput.isFire == true)
-        {
-            Shoot();
-        }
+      
     }
     // Update is called once per frame
     void Update()
     {
+        if (playerInput.isReload == true)
+        {
+            Reload();
+        }
+
+        if (playerInput.isFire == true)
+        {
+            lastFireInputTime = Time.time;
+
+            Shoot();
+        }
+
         var angle = playerCamera.transform.eulerAngles.x;
-        if(angle > 270)
+        if (angle > 270)
         {
             angle -= 360f;
         }
         angle = angle / -180f + 0.5f;
         playerAnimator.SetFloat("Angle", angle);
-        
-        UpdateAimTarget();
-        
-        if (playerInput.isReload == true)
+
+        if (!playerInput.isFire && Time.time >= lastFireInputTime + waitingTimeForReleasdingAim)
         {
-            Reload();
+            aimState = AimState.Idle;
         }
+
+        UpdateAimTarget();
+
     }
 
     public void Reload()
@@ -127,7 +142,7 @@ public class PlayerShooter : MonoBehaviour
     }
     private void OnAnimatorIK(int layerIndex)
     {
-        if(gun == null || gun.state == Gun.State.Reloading)
+        if (gun == null || gun.state == Gun.State.Reloading)
         {
             return;
         }

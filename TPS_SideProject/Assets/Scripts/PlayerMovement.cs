@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController characterController;
     private PlayerInput input;
+    private PlayerShooter playerShooter;
     private Animator animator;
     private Camera followCamera;
 
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerShooter = GetComponent<PlayerShooter>();
         input = GetComponent<PlayerInput>();
         characterController = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
@@ -33,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (currentSpeed > 2.0f || input.isFire == true)
+        if (currentSpeed > 2.0f || input.isFire || playerShooter.aimState == PlayerShooter.AimState.HipFire)
         {
             Rotate();
         }
