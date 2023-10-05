@@ -150,6 +150,10 @@ public class PlayerShooter : MonoBehaviour
                 aimPoint = hit.point;
             }
         }
+        else if (Physics.Linecast(gun.fireTransform.position, ray.GetPoint(gun.fireDistance), out hit) == true)
+        {
+            aimPoint = hit.point;
+        }
         else
         {
             aimPoint = playerCamera.transform.position + playerCamera.transform.forward * gun.fireDistance;
