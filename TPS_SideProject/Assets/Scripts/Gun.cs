@@ -117,6 +117,10 @@ public class Gun : MonoBehaviour
 
                 target.ApplyDamage(damageMessage);
             }
+            else
+            {
+                EffectManager.Instance.PlayHitEffect(hit.point, hit.normal, hit.transform, EffectManager.EffectType.c);
+            }
             hitPosition = hit.point;
         }
         else
