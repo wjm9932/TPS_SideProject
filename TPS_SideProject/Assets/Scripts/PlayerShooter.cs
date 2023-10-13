@@ -14,6 +14,7 @@ public class PlayerShooter : MonoBehaviour
 
     public LayerMask excludeTarget;
     public Gun gun;
+   
     private PlayerInput playerInput;
     private Animator playerAnimator;
     private Camera playerCamera;
@@ -23,7 +24,7 @@ public class PlayerShooter : MonoBehaviour
 
     private Vector3 aimPoint;
     private bool linedUp => !(Mathf.Abs(playerCamera.transform.eulerAngles.y - transform.eulerAngles.y) > 1f);
-    private bool hasEnoughDistance => !Physics.Linecast(transform.position + Vector3.up * gun.fireTransform.position.y, gun.transform.position, ~excludeTarget);
+    private bool hasEnoughDistance => !Physics.Linecast(transform.position + Vector3.up * gun.fireTransform.position.y, gun.fireTransform.transform.position, ~excludeTarget);
 
     private void Awake()
     {

@@ -119,7 +119,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                EffectManager.Instance.PlayHitEffect(hit.point, hit.normal, hit.transform, EffectManager.EffectType.c);
+                EffectManager.Instance.PlayHitEffect(hit.point, hit.normal, hit.transform);
             }
             hitPosition = hit.point;
         }
