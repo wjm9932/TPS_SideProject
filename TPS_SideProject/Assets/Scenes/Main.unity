@@ -281,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186624834}
   m_LocalRotation: {x: 0.86227846, y: -0.010484353, z: -0.50627464, w: 0.0072163492}
-  m_LocalPosition: {x: 0.158, y: 0.016, z: -0.062}
+  m_LocalPosition: {x: 0.164, y: 0.015, z: -0.113}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1615352496}
@@ -1026,6 +1026,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 824135603957937721, guid: d0cad84e4064147469b75ebe8b4556bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 824135603957937723, guid: d0cad84e4064147469b75ebe8b4556bb,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 824135604299467325, guid: d0cad84e4064147469b75ebe8b4556bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 824135604299467329, guid: d0cad84e4064147469b75ebe8b4556bb,
         type: 3}
       propertyPath: smoothTime
@@ -1045,6 +1060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EffectColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 824135605320413117, guid: d0cad84e4064147469b75ebe8b4556bb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0cad84e4064147469b75ebe8b4556bb, type: 3}
@@ -1433,7 +1453,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1332948977}
-  m_LocalRotation: {x: -0.024021422, y: 0.11919626, z: 0.0028846802, w: 0.99257594}
+  m_LocalRotation: {x: -0.024021426, y: 0.11919626, z: 0.0028846806, w: 0.99257594}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
