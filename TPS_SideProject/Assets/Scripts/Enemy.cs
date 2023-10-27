@@ -110,11 +110,63 @@ public class Enemy : LivingEntity
     private void Update()
     {
         if (dead) return;
+
+        if(state == State.Tracking)   
+        {
+            var distance = Vector3.Distance(targetEntity.transform.position, transform.position);
+            if(distance <= attackDistance)
+            {
+                BeginAttack();
+            }
+        }
+
+        animator.SetFloat("Speed", agent.desiredVelocity.magnitude);
     }
 
     private void FixedUpdate()
     {
+        if (dead) return;
 
+        if(state == State.AttackBegin || state == State.Attacking)
+        {
+            var lookRotation = Quaternion.LookRotation(targetEntity.transform.position - transform.position);
+            var targetAngleY = lookRotation.eulerAngles.y;
+
+            targetAngleY = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngleY, ref turnSmoothVelocity, turnSmoothTime);
+            transform.eulerAngles = Vector3.up * targetAngleY;
+        }
+
+        if(state == State.Attacking)
+        {
+            var direction = transform.forward;
+            var deltaDistance = agent.velocity.magnitude * Time.deltaTime;
+            var size = Physics.SphereCastNonAlloc(attackRoot.position, attackRadius, direction, hits, deltaDistance, whatIsTarget);
+
+            for(var i = 0; i < size; i++)
+            {
+                var attackTargetEntitiy = hits[i].collider.GetComponent<LivingEntity>();
+
+                if(attackTargetEntitiy != null && !lastAttackedTargets.Contains(attackTargetEntitiy))
+                {
+                    var message = new DamageMessage();
+                    message.amount = damage;
+                    message.damager = gameObject;
+
+                    if (hits[i].distance <= 0f)
+                    {
+                        message.hitPoint = attackRoot.position;
+                    }
+                    else
+                    {
+                        message.hitPoint = hits[i].point;
+                    }
+                    message.hitNormal = hits[i].normal;
+                    attackTargetEntitiy.ApplyDamage(message);
+                    lastAttackedTargets.Add(attackTargetEntitiy);
+                    break;
+                }
+            }
+        }
     }
 
     private IEnumerator UpdatePath()
@@ -172,9 +224,20 @@ public class Enemy : LivingEntity
 
     public override bool ApplyDamage(DamageMessage damageMessage)
     {
-        if (!base.ApplyDamage(damageMessage)) return false;
-
-        return true;
+        if (!base.ApplyDamage(damageMessage))
+        {
+            return false;
+        }
+        else 
+        {
+            if(targetEntity == null)
+            {
+                targetEntity = damageMessage.damager.GetComponent<LivingEntity>();
+            }
+            EffectManager.Instance.PlayHitEffect(damageMessage.hitPoint, damageMessage.hitNormal, transform, EffectManager.EffectType.Flesh);
+            audioPlayer.PlayOneShot(hitClip);
+            return true;
+        }
     }
 
     public void BeginAttack()
@@ -194,8 +257,14 @@ public class Enemy : LivingEntity
 
     public void DisableAttack()
     {
-        state = State.Tracking;
-
+        if (hasTarget == true)
+        {
+            state = State.Tracking;
+        }
+        else
+        {
+            state = State.Patrol;
+        }
         agent.isStopped = false;
     }
 
@@ -227,6 +296,13 @@ public class Enemy : LivingEntity
 
     public override void Die()
     {
+        base.Die();
 
+        GetComponent<Collider>().enabled = false;
+        agent.enabled = false;
+        animator.applyRootMotion = true;
+        animator.SetTrigger("Die");
+
+        audioPlayer.PlayOneShot(deathClip);
     }
 }
