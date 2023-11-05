@@ -44,7 +44,14 @@ public class LivingEntity : MonoBehaviour, IDamageble
     {
         if (dead) return;
 
-        health += newHealth;
+        if(health + newHealth > 100)
+        {
+            health = 100;
+        }
+        else
+        {
+            health += newHealth;
+        }
     }
 
     public virtual void Die()
