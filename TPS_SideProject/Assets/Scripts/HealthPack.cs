@@ -4,7 +4,7 @@ public class HealthPack : MonoBehaviour, IItem
 {
     public float health = 50;
 
-    public void Use(GameObject target)
+    public bool Use(GameObject target)
     {
         var livingEntity = GetComponent<LivingEntity>();
 
@@ -15,7 +15,13 @@ public class HealthPack : MonoBehaviour, IItem
                 livingEntity.RestoreHealth(health);
 
                 Destroy(gameObject);
+
+                return true;
             }  
+
+            return false;
         }
+
+        return false;
     }
 }

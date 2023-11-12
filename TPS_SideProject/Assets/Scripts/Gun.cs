@@ -23,7 +23,7 @@ public class Gun : MonoBehaviour
     public float damage = 25f;
     public float fireDistance = 100f;
 
-    public int ammoRemain = 100;
+    public int ammoRemain = 120;
     public int magAmmo;
     public int magCapacity = 30;
 

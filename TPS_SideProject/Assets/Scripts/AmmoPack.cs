@@ -4,7 +4,7 @@ public class AmmoPack : MonoBehaviour, IItem
 {
     public int ammo = 30;
 
-    public void Use(GameObject target)
+    public bool Use(GameObject target)
     {
         var playerShooter = target.GetComponent<PlayerShooter>();
 
@@ -14,5 +14,7 @@ public class AmmoPack : MonoBehaviour, IItem
         }
 
         Destroy(gameObject);
+
+        return true;
     }
 }

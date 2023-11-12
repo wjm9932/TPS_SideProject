@@ -2,5 +2,5 @@
 
 public interface IItem
 {
-    void Use(GameObject target);
+    bool Use(GameObject target);
 }
