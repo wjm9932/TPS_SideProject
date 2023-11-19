@@ -24,6 +24,7 @@ public class PlayerHealth : LivingEntity
     public override void RestoreHealth(float newHealth)
     {
         base.RestoreHealth(newHealth);
+        UpdateUI();
     }
 
     private void UpdateUI()

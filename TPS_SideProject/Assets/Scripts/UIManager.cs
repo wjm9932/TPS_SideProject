@@ -62,11 +62,13 @@ public class UIManager : MonoBehaviour
     
     public void SetActiveGameoverUI(bool active)
     {
+        crosshair.gameObject.SetActive(false);
         gameoverUI.SetActive(active);
     }
     
     public void GameRestart()
     {
+        crosshair.gameObject.SetActive(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -6,11 +6,11 @@ public class HealthPack : MonoBehaviour, IItem
 
     public bool Use(GameObject target)
     {
-        var livingEntity = GetComponent<LivingEntity>();
+        var livingEntity = target.GetComponent<LivingEntity>();
 
         if (livingEntity != null)
         {
-            if(livingEntity.health < 100)
+            if (livingEntity.health < 100)
             {
                 livingEntity.RestoreHealth(health);
 

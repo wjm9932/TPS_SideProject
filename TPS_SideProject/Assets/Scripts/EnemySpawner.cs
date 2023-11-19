@@ -58,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
         var speed = Mathf.Lerp(speedMin, speedMax, intensity);
         var skinColor = Color.Lerp(Color.white, strongEnemyColor, intensity);
 
-        var enemy = Instantiate(enemyPrefab, Utility.GetRandomPointOnNavMesh(new Vector3(0f,0f,0f), 50f, NavMesh.AllAreas), Quaternion.identity);
+        var enemy = Instantiate(enemyPrefab, Utility.GetRandomPointOnNavMesh(player.position, 30f, NavMesh.AllAreas), Quaternion.identity);
         enemy.Setup(health, damage, speed, speed * 0.3f, skinColor);
 
         enemies.Add(enemy);
