@@ -84,7 +84,6 @@ public class Gun : MonoBehaviour
             fireDir = Quaternion.AngleAxis(yError, Vector3.up) * fireDir;
             fireDir = Quaternion.AngleAxis(xError, Vector3.right) * fireDir;
 
-
             currentSpread += 1f / stability;
 
             lastFireTime = Time.time;
