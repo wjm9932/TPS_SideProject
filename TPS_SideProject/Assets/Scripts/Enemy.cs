@@ -47,7 +47,7 @@ public class Enemy : LivingEntity
     public LayerMask whatIsTarget;
 
 
-    private RaycastHit[] hits = new RaycastHit[10];
+    private RaycastHit[] hits = new RaycastHit[1];
     private List<LivingEntity> lastAttackedTargets = new List<LivingEntity>();
 
     private bool hasTarget => targetEntity != null && !targetEntity.dead;
@@ -152,14 +152,7 @@ public class Enemy : LivingEntity
                     message.amount = damage;
                     message.damager = gameObject;
 
-                    if (hits[i].distance <= 0f)
-                    {
-                        message.hitPoint = attackRoot.position;
-                    }
-                    else
-                    {
-                        message.hitPoint = hits[i].point;
-                    }
+                    message.hitPoint = hits[i].point;
                     message.hitNormal = hits[i].normal;
                     attackTargetEntitiy.ApplyDamage(message);
                     lastAttackedTargets.Add(attackTargetEntitiy);
